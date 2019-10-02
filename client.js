@@ -41,3 +41,60 @@ const employees = [
 // Ask questions when you don't.
 
 console.log( employees );
+
+for (let i = 0; i < employees.length; i++) {
+  console.log(employeeBonus(employees[i]));
+}// end for
+
+function employeeBonus(employee){
+  // define empty object
+  let newEmployeeObject = {};
+  // get employee's name
+  newEmployeeObject.name = employee.name
+  // get bonusPercentage and define it as new variable
+  let bonusPercentage = bonusCalculation(employee);
+  // add to new object
+  newEmployeeObject.bonusPercentage = bonusPercentage;
+  // define new totalBonus variable
+  let totalBonus = Math.round(employee.annualSalary * bonusPercentage);
+  // add to new object
+  newEmployeeObject.totalBonus = totalBonus
+  // define new totalCompensation variable
+  let totalCompensation = Number(employee.annualSalary) + totalBonus;
+  // add to new object
+  newEmployeeObject.totalCompensation = totalCompensation
+  // return
+  return newEmployeeObject;
+}// end employeeBonus
+
+function bonusCalculation(employee){
+  let bonusPercentage = 0;
+
+  if(employee.reviewRating === 3){
+    bonusPercentage += .04
+  }// end rating of 3
+  else if (employee.reviewRating === 4) {
+    bonusPercentage += .06
+  }// end rating of 4
+  else if (employee.reviewRating === 5) {
+    bonusPercentage += .1
+  }// end rating of 5
+
+  if(employee.employeeNumber.length === 4){
+    bonusPercentage += .05;
+  }// end employee # four digits long
+
+  if(Number(employee.annualSalary) > 65000){
+    bonusPercentage -= .01;
+  }// end employee annual income greater than $65000
+
+  if(bonusPercentage > .13){
+    bonusPercentage = .13;
+  }
+
+  if (bonusPercentage < 0) {
+    bonusPercentage = 0;
+  }
+
+  return bonusPercentage;
+}// end bonusCalculation
