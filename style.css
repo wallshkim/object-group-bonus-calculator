@@ -1,0 +1,21 @@
+.table {
+    width: 800px;
+}
+
+.buttonAndTableContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.jumbotron {
+    padding: 30px;
+    text-align: center;
+}
+
+#runButton {
+    margin: 0px 30px;
+    padding: 10px 20px;
+}
